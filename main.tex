@@ -1,0 +1,126 @@
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{settings/altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
+  %\renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[default]{lato}
+  % \usepackage{sourcesanspro}
+  %\renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\definecolor{Bronze}{HTML}{CD7F32}
+\definecolor{Brown}{HTML}{5B3224}
+\colorlet{name}{Brown}
+\colorlet{tagline}{SlateGrey}
+\colorlet{heading}{Brown}
+\colorlet{headingrule}{Brown}
+\colorlet{subheading}{SlateGrey}
+\colorlet{accent}{SlateGrey}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{SlateGrey}
+
+% Change some fonts, if necessary
+%\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+%\renewcommand{\personalinfofont}{\footnotesize}
+%\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+%\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+\addbibresource{publications.bib}
+
+\begin{document}
+\name{IURII BATRAKOV}
+\tagline{Applied Mathematics and Computer Science Student}
+%% You can add multiple photos on the left or right
+% \photoR{2.8cm}{images/Globe_High}
+% \photoL{2.5cm}{images/Yacht_High,Suitcase_High}
+
+\input{contacts}
+
+\makecvheader
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.55}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+% use ONLY \newpage if you want to force a page break for
+% ONLY the current column
+% \newpage
+%% Yeah I didn't spend too much time making all the
+%% spacing consistent... sorry. Use \smallskip, \medskip,
+%% \bigskip, \vpsace etc to make ajustments.
+
+\begin{paracol}{2}
+
+\input{parts/projects}
+
+\input{parts/education}
+
+\input{parts/experience}
+
+\medskip
+
+% \input{parts/dayoflife}
+
+% \input{parts/publications}
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+\input{parts/lifephilosophy}
+
+\input{parts/achievements}
+
+\input{parts/strengths}
+
+\input{parts/languages}
+
+%\input{parts/hobbies}
+
+% \input{parts/referees}
+
+\end{paracol}
+\end{document}
